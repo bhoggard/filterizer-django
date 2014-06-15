@@ -65,7 +65,15 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
-    }
+    },
+    'legacy': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'filterizer',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
 }
 
 # Internationalization

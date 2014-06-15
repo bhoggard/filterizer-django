@@ -22,8 +22,8 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('address', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('website', self.gf('django.db.models.fields.URLField')(max_length=200)),
-            ('twitter', self.gf('django.db.models.fields.CharField')(max_length=30)),
-            ('updated_at', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
+            ('twitter', self.gf('django.db.models.fields.CharField')(max_length=30, blank=True)),
+            ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal(u'artcalendar', ['Venue'])
 
@@ -34,12 +34,12 @@ class Migration(SchemaMigration):
             ('venue', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['artcalendar.Venue'])),
             ('start_date', self.gf('django.db.models.fields.DateField')()),
             ('end_date', self.gf('django.db.models.fields.DateField')()),
-            ('opening_date', self.gf('django.db.models.fields.DateField')(blank=True)),
-            ('opening_start_time', self.gf('django.db.models.fields.TimeField')(blank=True)),
-            ('opening_end_time', self.gf('django.db.models.fields.TimeField')(blank=True)),
+            ('opening_date', self.gf('django.db.models.fields.DateField')(null=True)),
+            ('opening_start_time', self.gf('django.db.models.fields.TimeField')(null=True)),
+            ('opening_end_time', self.gf('django.db.models.fields.TimeField')(null=True)),
             ('website', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('tweeted', self.gf('django.db.models.fields.BooleanField')()),
-            ('updated_at', self.gf('django.db.models.fields.DateField')(auto_now=True, blank=True)),
+            ('updated_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal(u'artcalendar', ['Event'])
 
@@ -60,13 +60,13 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Event'},
             'end_date': ('django.db.models.fields.DateField', [], {}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'opening_date': ('django.db.models.fields.DateField', [], {'blank': 'True'}),
-            'opening_end_time': ('django.db.models.fields.TimeField', [], {'blank': 'True'}),
-            'opening_start_time': ('django.db.models.fields.TimeField', [], {'blank': 'True'}),
+            'opening_date': ('django.db.models.fields.DateField', [], {'null': 'True'}),
+            'opening_end_time': ('django.db.models.fields.TimeField', [], {'null': 'True'}),
+            'opening_start_time': ('django.db.models.fields.TimeField', [], {'null': 'True'}),
             'start_date': ('django.db.models.fields.DateField', [], {}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'tweeted': ('django.db.models.fields.BooleanField', [], {}),
-            'updated_at': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'venue': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['artcalendar.Venue']"}),
             'website': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         },
@@ -81,8 +81,8 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'neighborhood': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['artcalendar.Neighborhood']"}),
-            'twitter': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
-            'updated_at': ('django.db.models.fields.DateField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'twitter': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
+            'updated_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'website': ('django.db.models.fields.URLField', [], {'max_length': '200'})
         }
     }
