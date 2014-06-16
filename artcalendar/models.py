@@ -6,6 +6,9 @@ class Neighborhood(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        ordering = ('name',)
+
 class Venue(models.Model):
     neighborhood = models.ForeignKey(Neighborhood)
     name = models.CharField(max_length=255)
@@ -16,6 +19,9 @@ class Venue(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        ordering = ('name',)
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
@@ -32,3 +38,6 @@ class Event(models.Model):
     def __unicode__(self):
         return self.title
         # return "%s (%s)" % self.title, self.venue.name
+
+    class Meta:
+        ordering = ('-end_date',)
