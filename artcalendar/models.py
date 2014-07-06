@@ -31,7 +31,7 @@ class Event(models.Model):
     opening_date = models.DateField(null=True)
     opening_start_time = models.TimeField(null=True)
     opening_end_time = models.TimeField(null=True)
-    website = models.URLField()
+    website = models.URLField(blank=True)
     tweeted = models.BooleanField()
     updated_at = models.DateTimeField(auto_now=True)
 
