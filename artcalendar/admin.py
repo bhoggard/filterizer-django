@@ -13,7 +13,7 @@ class EventAdminForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(EventAdminForm, self).__init__(*args, **kwargs)
-        if self.instance and self.instance.pk and self.instance.owner:
+        if self.instance and self.instance.pk and self.instance.venue:
             self.initial['venue'] = self.instance.venue.pk
 
     def save(self, *args, **kwargs):
