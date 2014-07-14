@@ -33,7 +33,7 @@ class Event(models.Model):
     opening_start_time = models.TimeField(null=True, default='18:00:00')
     opening_end_time = models.TimeField(null=True, default='20:00:00')
     website = models.URLField(blank=True)
-    tweeted = models.BooleanField()
+    tweeted = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
@@ -44,6 +44,6 @@ class Event(models.Model):
 
     @classmethod
     def opening_soon(cls):
-        return cls.objects.filter(opening_date__gte=timezone.now(),
-                       opening_date__lte=timezone.now() + datetime.timedelta(days=10)
+        return cls.objects.filter(opening_date__gte=timezone.now().date(),
+                       opening_date__lte=timezone.now().date() + datetime.timedelta(days=10)
                       ).order_by('opening_date', 'opening_start_time')

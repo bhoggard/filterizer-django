@@ -11,11 +11,11 @@ class EventTest(TestCase):
         venue = Venue.objects.get(pk=1)
         event = Event(venue=venue, title='Matthew Craven', start_date=timezone.now(),
                              end_date=timezone.now() + datetime.timedelta(days=30),
-                             opening_date=timezone.now() + datetime.timedelta(days=3))
-        event.save
+                             opening_date=timezone.now() + datetime.timedelta(days=2))
+        event.save()
         event2 = Event(venue=venue, title='Matthew Craven', start_date=timezone.now(),
                              end_date=timezone.now() + datetime.timedelta(days=30),
                              opening_date=timezone.now() - datetime.timedelta(days=1))
-        event2.save
-        list = Event.opening_soon()
-        self.assertEqual(list, event)
+        event2.save()
+        openings = Event.opening_soon()
+        self.assertEqual(openings[0], event)
