@@ -39,3 +39,8 @@ class Event(models.Model):
 
     class Meta:
         ordering = ('-end_date',)
+
+    def opening_soon():
+        objects.filter(opening_date__gte=timezone.now(),
+                       opening_date__lte=timezone.now() + datetime.timedelta(days=10)
+                      ).order_by('opening_date', 'opening_start_time')
