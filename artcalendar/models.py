@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+import datetime
 
 class Neighborhood(models.Model):
     name = models.CharField(max_length=200)
@@ -40,7 +42,8 @@ class Event(models.Model):
     class Meta:
         ordering = ('-end_date',)
 
-    def opening_soon():
-        objects.filter(opening_date__gte=timezone.now(),
+    @classmethod
+    def opening_soon(cls):
+        return cls.objects.filter(opening_date__gte=timezone.now(),
                        opening_date__lte=timezone.now() + datetime.timedelta(days=10)
                       ).order_by('opening_date', 'opening_start_time')

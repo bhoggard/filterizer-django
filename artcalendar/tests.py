@@ -13,4 +13,9 @@ class EventTest(TestCase):
                              end_date=timezone.now() + datetime.timedelta(days=30),
                              opening_date=timezone.now() + datetime.timedelta(days=3))
         event.save
-        self.assertEqual(1,1)
+        event2 = Event(venue=venue, title='Matthew Craven', start_date=timezone.now(),
+                             end_date=timezone.now() + datetime.timedelta(days=30),
+                             opening_date=timezone.now() - datetime.timedelta(days=1))
+        event2.save
+        list = Event.opening_soon()
+        self.assertEqual(list, event)
