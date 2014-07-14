@@ -30,8 +30,7 @@ def import_venues():
     cursor = setup_cursor()
     if cursor is None:
         return
-    sql = """SELECT id, neighborhood_id, name, address, website,
-        updated_at, twitter FROM venues"""
+    sql = """SELECT id, neighborhood_id, name, address, website, twitter FROM venues"""
     cursor.execute(sql)
     for row in cursor.fetchall():
         try:
@@ -46,8 +45,7 @@ def import_venues():
                 name=row[2],
                 address=row[3],
                 website=row[4],
-                updated_at=row[5],
-                twitter=(row[6] or ''),
+                twitter=(row[5] or ''),
             )
             venue.save()
 

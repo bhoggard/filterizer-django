@@ -15,7 +15,6 @@ class Venue(models.Model):
     address = models.CharField(max_length=255)
     website = models.URLField()
     twitter = models.CharField(max_length=30, blank=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.name
@@ -33,7 +32,6 @@ class Event(models.Model):
     opening_end_time = models.TimeField(null=True, default='20:00:00')
     website = models.URLField(blank=True)
     tweeted = models.BooleanField()
-    updated_at = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return self.title
