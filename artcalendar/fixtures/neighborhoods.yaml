@@ -1,0 +1,63 @@
+- fields: {name: Chelsea}
+  model: artcalendar.neighborhood
+  pk: 1
+- fields: {name: East Village / Lower East Side}
+  model: artcalendar.neighborhood
+  pk: 2
+- fields: {name: Bushwick/Ridgewood}
+  model: artcalendar.neighborhood
+  pk: 3
+- fields: {name: Tribeca / Downtown}
+  model: artcalendar.neighborhood
+  pk: 5
+- fields: {name: SoHo}
+  model: artcalendar.neighborhood
+  pk: 6
+- fields: {name: Williamsburg}
+  model: artcalendar.neighborhood
+  pk: 7
+- fields: {name: Upper East Side}
+  model: artcalendar.neighborhood
+  pk: 8
+- fields: {name: Midtown}
+  model: artcalendar.neighborhood
+  pk: 9
+- fields: {name: Gowanus}
+  model: artcalendar.neighborhood
+  pk: 10
+- fields: {name: Long Island City}
+  model: artcalendar.neighborhood
+  pk: 11
+- fields: {name: Museums}
+  model: artcalendar.neighborhood
+  pk: 12
+- fields: {name: Greenwich Village}
+  model: artcalendar.neighborhood
+  pk: 13
+- fields: {name: Dumbo}
+  model: artcalendar.neighborhood
+  pk: 14
+- fields: {name: Boerum Hill}
+  model: artcalendar.neighborhood
+  pk: 15
+- fields: {name: Bronx}
+  model: artcalendar.neighborhood
+  pk: 16
+- fields: {name: 'Sunset Park, Brooklyn'}
+  model: artcalendar.neighborhood
+  pk: 17
+- fields: {name: Hell's Kitchen/Midtown West}
+  model: artcalendar.neighborhood
+  pk: 18
+- fields: {name: Park Slope}
+  model: artcalendar.neighborhood
+  pk: 19
+- fields: {name: Fort Greene}
+  model: artcalendar.neighborhood
+  pk: 20
+- fields: {name: Flatbush}
+  model: artcalendar.neighborhood
+  pk: 21
+- fields: {name: Upper Manhattan}
+  model: artcalendar.neighborhood
+  pk: 22

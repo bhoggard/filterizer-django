@@ -1,0 +1,8 @@
+- fields: {address: 21 Orchard Street, name: DCKT Contemporary, neighborhood: 2, twitter: DCKT,
+    website: 'http://www.dcktcontemporary.com/'}
+  model: artcalendar.venue
+  pk: 1
+- fields: {address: 623 West 27th Street, name: Foxy Production, neighborhood: 1,
+    twitter: FOXY_PRODUCTION, website: 'http://www.foxyproduction.com/'}
+  model: artcalendar.venue
+  pk: 25
