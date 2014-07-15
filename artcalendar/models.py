@@ -44,9 +44,32 @@ class Event(models.Model):
 
     @classmethod
     def opening_soon(cls):
-        return cls.objects.filter(opening_date__gte=timezone.now().date(),
-                       opening_date__lte=timezone.now().date() + datetime.timedelta(days=10)
+        today = timezone.now().date()
+        return cls.objects.filter(opening_date__gte=today,
+                       opening_date__lte=today + datetime.timedelta(days=10)
                       ).order_by('opening_date', 'opening_start_time')
     @classmethod
     def for_tweeting_today(cls):
-        return cls.objects.filter(opening_date=timezone.now().date(), tweeted=False).order_by('id')
+        return cls.objects.filter(
+            opening_date=timezone.now().date(),
+            tweeted=False
+            ).order_by('id')
+
+    @classmethod
+    def open_now(cls):
+        """Return Events that are open now, organized by Neighborhood"""
+        hood_list = []
+        today = timezone.now().date()
+        for hood in Neighborhood.objects.all().order_by('name'):
+            events = Event.objects.filter(
+                venue__neighborhood=hood,
+                start_date__lte=today,
+                end_date__gte=today
+                ).order_by('-end_date')
+            if len(events) > 0:
+                hood_list.append([hood.name, list(events)])
+        return hood_list
+
+
+
+

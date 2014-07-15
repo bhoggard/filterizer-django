@@ -35,3 +35,14 @@ class EventTest(TestCase):
         event2.save()
         to_tweet = Event.for_tweeting_today()
         self.assertEqual(to_tweet[0], event)
+
+    def test_open_now(self):
+        venue = Venue.objects.get(pk=1)
+        today = timezone.now().date()
+        event = Event(venue=venue, title='Matthew Craven', start_date=today,
+                      end_date=today + datetime.timedelta(days=30),
+                      opening_date=today)
+        event.save()
+        hood_list = Event.open_now()
+        self.assertEqual(hood_list[0][0], venue.neighborhood.name)
+        self.assertEqual(hood_list[0][1], [event])
