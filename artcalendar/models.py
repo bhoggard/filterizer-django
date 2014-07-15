@@ -37,10 +37,31 @@ class Event(models.Model):
 
     def __unicode__(self):
         return self.title
-        # return "%s (%s)" % self.title, self.venue.name
 
     class Meta:
         ordering = ('-end_date',)
+
+    def url(self):
+        return self.website or self.venue.website
+
+    def mark_tweeted(self):
+        self.tweeted = True
+        self.save
+
+    # text for tweets
+    def tweet_text(self):
+        """Return text to be used for tweeting"""
+        MAX_TWEET_LENGTH = 120
+        venue = self.venue
+        text = "At %s" % venue.name
+        if venue.twitter:
+            text += " @%s" % venue.twitter
+        text += ": %s" % self.title
+        if len(text) > MAX_TWEET_LENGTH:
+            text = text[0:MAX_TWEET_LENGTH]
+        if self.url():
+            text += " %s" % self.url()
+        return text
 
     @classmethod
     def opening_soon(cls):
