@@ -47,3 +47,6 @@ class Event(models.Model):
         return cls.objects.filter(opening_date__gte=timezone.now().date(),
                        opening_date__lte=timezone.now().date() + datetime.timedelta(days=10)
                       ).order_by('opening_date', 'opening_start_time')
+    @classmethod
+    def for_tweeting_today(cls):
+        return cls.objects.filter(opening_date=timezone.now().date(), tweeted=False).order_by('id')
