@@ -5,3 +5,4 @@ stevedore==0.15
 wsgiref==0.1.2
 django-selectable==0.8.0
 PyYAML==3.11
+-e git://github.com/bufferapp/buffer-python.git#egg=buffer-python
