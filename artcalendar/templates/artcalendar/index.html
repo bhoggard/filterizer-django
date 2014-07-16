@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Filterizer</title>
+    <meta name="description" content="A one-page art show recommendation website from Barry Hoggard and James Wagner">
+    <meta name="viewport" content="width=device-width">
+    {% load staticfiles %}
+    <link href="{% static 'artcalendar/favicon.ico' %}" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <link rel="stylesheet" type="text/css" href="{% static 'artcalendar/normalize.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'artcalendar/style.css' %}" />
+  </head>
+
+  <body>
+
+    <section id="header">
+      <h2><a href="/">FILTERIZER</a></h2>
+    </section>
+
+    <section id="main">
+      {% load app_filters %}
+      {% if opening_soon|length > 0 %}
+
+        <h3>Openings</h3>
+
+        {% for opening in opening_soon %}
+        <div class="opening">
+          <h4><span class="title">{{ opening.title }}</span> at <a href="{{ opening.url}}">{{ opening.venue.name }}</a></h4>
+          <p class="opening-date">{{ opening | opening_datetime }}</p>
+          <p class="address">{{ opening.venue.address }} [{{ opening.venue.neighborhood.name }}]</p>
+        </div>
+        {% endfor %}
+
+      {% endif %}
+
+      {% if open_now|length > 0 %}
+
+        <h3>Already Open</h3>
+
+        {% for now in open_now %}
+
+          <h4 class="neighborhood">{{ now.0 }}</h4>
+
+          {% for event in now.1 %}
+            <h4><span class="title">{{ event.title }}</span> at <a href="{{ event.url}}">{{ event.venue.name }}</a></h4>
+            <p class="address">{{ event.venue.address }}</p>
+            <p class="closes">closes {{ event.end_date|date:"l, F j" }}</p>
+          {% endfor %}
+
+        {% endfor %}
+
+      {% endif %}
+    </section>
+
+    <section id="footer">
+      <p>A one-page art show recommendation website from <a href="https://twitter.com/bhoggard">@bhoggard</a> and <a href="https://twitter.com/wagnerblog">@wagnerblog</a>. Follow us on Twitter: <a href="https://twitter.com/filterizer">@filterizer</a>.</p>
+    </section>
+
+  </body>
+</html>
+
