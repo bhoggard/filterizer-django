@@ -1,1 +1,8 @@
 *.pyc
+bin
+.Python
+include
+lib
+man
+src
+

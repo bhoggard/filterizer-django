@@ -1,0 +1,1 @@
+web: gunicorn filterizer.wsgi --log-file -

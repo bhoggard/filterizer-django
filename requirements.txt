@@ -6,3 +6,7 @@ wsgiref==0.1.2
 django-selectable==0.8.0
 PyYAML==3.11
 -e git://github.com/bufferapp/buffer-python.git#egg=buffer-python
+dj-database-url==0.2.2
+dj-static==0.0.5
+gunicorn==18.0
+static==0.4
