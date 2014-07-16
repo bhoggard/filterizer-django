@@ -59,15 +59,11 @@ WSGI_APPLICATION = 'filterizer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# Parse database configuration from $DATABASE_URL
+# - set up in postactivate
+import dj_database_url
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'filterizer_django',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
+    'default': dj_database_url.config(),
     'legacy': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'filterizer',
@@ -90,11 +86,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
