@@ -16,4 +16,6 @@ class Command(BaseCommand):
         api = API(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, access_token=ACCESS_TOKEN)
         profile = Profiles(api=api).filter(service='twitter')[0]
 
-        # profile.updates.new("Testing new auto-tweeter for openings")
+        for event in Event.for_tweeting_today():
+            profile.updates.new(event.tweet_text, shorten=True)
+
