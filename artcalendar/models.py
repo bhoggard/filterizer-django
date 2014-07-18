@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils import timezone
+# from django.utils import timezone
 import datetime
 
 class Neighborhood(models.Model):
@@ -65,14 +65,14 @@ class Event(models.Model):
 
     @classmethod
     def opening_soon(cls):
-        today = timezone.now().date()
+        today = datetime.datetime.now().date()
         return cls.objects.filter(opening_date__gte=today,
                        opening_date__lte=today + datetime.timedelta(days=10)
                       ).order_by('opening_date', 'opening_start_time')
     @classmethod
     def for_tweeting_today(cls):
         return cls.objects.filter(
-            opening_date=timezone.now().date(),
+            opening_date=datetime.datetime.now().date(),
             tweeted=False
             ).order_by('id')
 
@@ -80,7 +80,7 @@ class Event(models.Model):
     def open_now(cls):
         """Return Events that are open now, organized by Neighborhood"""
         hood_list = []
-        today = timezone.now().date()
+        today = datetime.datetime.now().date()
         for hood in Neighborhood.objects.all().order_by('name'):
             events = Event.objects.filter(
                 venue__neighborhood=hood,

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from artcalendar.models import Venue, Event
-from django.utils import timezone
+# from django.utils import timezone
 import datetime
 
 # Create your tests here.
@@ -9,7 +9,7 @@ class EventTest(TestCase):
 
     def test_opening_soon(self):
         venue = Venue.objects.get(pk=1)
-        today = timezone.now().date()
+        today = datetime.datetime.now().date()
         event = Event(venue=venue, title='Matthew Craven', start_date=today,
                       end_date=today + datetime.timedelta(days=30),
                       opening_date=today + datetime.timedelta(days=2))
@@ -23,7 +23,7 @@ class EventTest(TestCase):
 
     def test_for_tweeting_today(self):
         venue = Venue.objects.get(pk=1)
-        today = timezone.now().date()
+        today = datetime.datetime.now().date()
         event = Event(venue=venue, title='Matthew Craven', start_date=today,
                       end_date=today + datetime.timedelta(days=30),
                       opening_date=today)
@@ -53,7 +53,7 @@ class EventTest(TestCase):
 
     def test_open_now(self):
         venue = Venue.objects.get(pk=1)
-        today = timezone.now().date()
+        today = datetime.datetime.now().date()
         event = Event(venue=venue, title='Matthew Craven', start_date=today,
                       end_date=today + datetime.timedelta(days=30),
                       opening_date=today)
