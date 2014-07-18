@@ -29,7 +29,7 @@ class Event(models.Model):
     venue = models.ForeignKey(Venue)
     start_date = models.DateField()
     end_date = models.DateField()
-    opening_date = models.DateField(null=True)
+    opening_date = models.DateField(blank=True)
     opening_start_time = models.TimeField(null=True, default='18:00:00')
     opening_end_time = models.TimeField(null=True, default='20:00:00')
     website = models.URLField(blank=True)
