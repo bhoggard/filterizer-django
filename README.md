@@ -3,7 +3,11 @@ Filterizer
 
 Python Django code for http://www.filterizer.com/.
 
-This is a work in progress as I learn Python and Django.
+This is my first Python application.
+
+A custom command is run once per hour to tweet openings for the day:
+
+``python manage.py tweet``
 
 
 
