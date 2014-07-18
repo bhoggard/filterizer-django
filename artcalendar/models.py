@@ -46,7 +46,7 @@ class Event(models.Model):
 
     def mark_tweeted(self):
         self.tweeted = True
-        self.save
+        self.save()
 
     # text for tweets
     def tweet_text(self):

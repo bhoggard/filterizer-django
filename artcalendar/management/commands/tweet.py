@@ -17,5 +17,6 @@ class Command(BaseCommand):
         profile = Profiles(api=api).filter(service='twitter')[0]
 
         for event in Event.for_tweeting_today():
-            profile.updates.new(event.tweet_text, shorten=True)
+            profile.updates.new(event.tweet_text(), shorten=True)
+            event.mark_tweeted()
 
