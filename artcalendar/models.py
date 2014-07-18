@@ -58,7 +58,7 @@ class Event(models.Model):
             text += " @%s" % venue.twitter
         text += ": %s" % self.title
         if len(text) > MAX_TWEET_LENGTH:
-            text = text[0:MAX_TWEET_LENGTH]
+            text = text[0:MAX_TWEET_LENGTH] + '...'
         if self.url():
             text += " %s" % self.url()
         return text

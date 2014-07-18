@@ -45,7 +45,7 @@ class EventTest(TestCase):
 
         event.title = "long stuff " * 15
         event.venue.twitter = 'DCKT'
-        self.assertEqual("At DCKT Contemporary @DCKT: long stuff long stuff long stuff long stuff long stuff long stuff long stuff long stuff l... http://www.dcktcontemporary.com",
+        self.assertEqual("At DCKT Contemporary @DCKT: long stuff long stuff long stuff long stuff long stuff long stuff long stuff long stuff long... http://www.dcktcontemporary.com/",
             event.tweet_text())
 
         event.mark_tweeted()
