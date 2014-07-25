@@ -64,6 +64,14 @@ WSGI_APPLICATION = 'filterizer.wsgi.application'
 import dj_database_url
 DATABASES = {
     'default': dj_database_url.config(),
+    'legacy': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'filterizer',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
 }
 
 # Internationalization
@@ -77,7 +85,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
