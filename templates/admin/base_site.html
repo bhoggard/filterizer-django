@@ -2,7 +2,11 @@
 {% load i18n %}
 
 {% block title %}{{ title }} | {% trans 'Filterizer' %}{% endblock %}
-
+{% block extrahead %}
+    {% load selectable_tags %}
+    {% include_ui_theme %}
+    {% include_jquery_libs %}
+{% endblock %}
 {% block branding %}
 <h1 id="site-name">{% trans 'Filterizer' %}</h1>
 {% endblock %}
