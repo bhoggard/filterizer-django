@@ -86,7 +86,7 @@ class Event(models.Model):
                 venue__neighborhood=hood,
                 start_date__lte=today,
                 end_date__gte=today
-                ).order_by('-end_date')
+                ).order_by('end_date')
             if len(events) > 0:
                 hood_list.append([hood.name, list(events)])
         return hood_list
