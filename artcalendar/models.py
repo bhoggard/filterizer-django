@@ -27,13 +27,13 @@ class Venue(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=255)
     venue = models.ForeignKey(Venue)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    opening_date = models.DateField(blank=True)
+    start_date = models.DateField(db_index=True)
+    end_date = models.DateField(db_index=True)
+    opening_date = models.DateField(null=True, db_index=True)
     opening_start_time = models.TimeField(null=True, default='18:00:00')
     opening_end_time = models.TimeField(null=True, default='20:00:00')
     website = models.URLField(blank=True)
-    tweeted = models.BooleanField(default=False)
+    tweeted = models.BooleanField(default=False, db_index=True)
 
     def __unicode__(self):
         return self.title
