@@ -26,7 +26,8 @@ class EventTest(TestCase):
         today = datetime.datetime.now().date()
         event = Event(venue=venue, title='Matthew Craven', start_date=today,
                       end_date=today + datetime.timedelta(days=30),
-                      opening_date=today)
+                      opening_date=today,
+                      website='http://www.dcktcontemporary.com/exhibitions/1364')
         event.save()
         event2 = Event(venue=venue, title='Nancy S. Baker', start_date=today,
                        end_date=today + datetime.timedelta(days=30),
@@ -35,6 +36,11 @@ class EventTest(TestCase):
         event2.save()
         to_tweet = Event.for_tweeting_today()
         self.assertEqual(to_tweet[0], event)
+
+        self.assertEqual("At DCKT Contemporary @DCKT: Matthew Craven http://www.dcktcontemporary.com/exhibitions/1364",
+            event.tweet_text())
+
+        event.website = ''
 
         self.assertEqual("At DCKT Contemporary @DCKT: Matthew Craven http://www.dcktcontemporary.com/",
             event.tweet_text())
