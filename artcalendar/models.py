@@ -42,7 +42,7 @@ class Event(models.Model):
         ordering = ('-end_date',)
 
     def url(self):
-        return self.website or self.venue.website
+        return self.website.strip() or self.venue.website
 
     def mark_tweeted(self):
         self.tweeted = True
