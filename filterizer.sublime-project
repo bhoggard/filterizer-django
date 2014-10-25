@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/barry/python/filterizer",
+      "folder_exclude_patterns": ["lib"]
+		}
+	]
+}
