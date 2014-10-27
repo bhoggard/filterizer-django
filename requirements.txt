@@ -41,7 +41,6 @@ rsa==3.1.2
 six==1.8.0
 static==0.4
 stevedore==0.15
-vboxapi==1.0
 virtualenv==1.11.6
 virtualenv-clone==0.2.5
 virtualenvwrapper==4.3.1
