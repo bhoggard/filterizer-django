@@ -4,6 +4,8 @@ python: 2.7
 addons:
   postgresql: 9.3
 install: pip install -r requirements.txt
+before_script:
+- psql -c 'create database filterizer_django;' -U postgres
 script: ./manage.py test
 env:
   global:
