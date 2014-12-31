@@ -1,6 +1,10 @@
+sudo: false
 language: python
 python: 2.7
 addons:
   postgresql: 9.3
 install: pip install -r requirements.txt
 script: ./manage.py test
+env:
+  global:
+  - DATABASE_URL=postgres://postgres@localhost:5432/filterizer_django
